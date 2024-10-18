@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: calc(300px + 6rem);
+    height: calc(300px + 6rem);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.box {
+    width: 100px;
+    height: 150px;
+    background: red;
+    transition: all 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main :nth-child(1) {
+    height: calc(300px + 1rem);
+    background: blue;
+}
+
+main :nth-child(1) {
+    order: 1;
+}
+
+main :nth-child(2) {
+    order: 2;
+}
+
+main :nth-child(3) {
+    order: 3;
+}
+
+main :nth-child(4) {
+    order: 4;
+}
+
+main :nth-child(5) {
+    order: 5;
+}
