@@ -35,18 +35,23 @@ router.post(
         }
 
         // console.log('Order:', order, token);
-        const customer = await stripe.customers.create({
+        const fetchCustomer = await stripe.customers.list({
             email: req.currentUser!.email,
-            source: token,
-            name: req.currentUser!.email.split('@')[0],
-            address: {
-                line1: '510 Townsend St',
-                postal_code: '98140',
-                city: 'San Francisco',
-                state: 'CA',
-                country: 'US',
-            },
         });
+        const customer =
+            fetchCustomer.data[0] ||
+            (await stripe.customers.create({
+                email: req.currentUser!.email,
+                source: token,
+                name: req.currentUser!.email.split('@')[0],
+                address: {
+                    line1: '510 Townsend St',
+                    postal_code: '98140',
+                    city: 'San Francisco',
+                    state: 'CA',
+                    country: 'US',
+                },
+            }));
 
         // console.log('Customer:', customer);
         const charge = await stripe.charges.create({

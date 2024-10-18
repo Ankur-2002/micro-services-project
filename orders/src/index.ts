@@ -7,7 +7,7 @@ import { OrderExpirationListener } from './events/listeners/order-expiration-lis
 import { PaymentCreatedListener } from './events/listeners/payment-created-listener';
 
 const start = async () => {
-    console.log('Starting Orders Service');
+    console.log('Starting Orders Service.');
     if (!process.env.MONGO_URI)
         throw new Error('MONGO_URL not defined in the ENV');
     if (!process.env.NATS_URL)
